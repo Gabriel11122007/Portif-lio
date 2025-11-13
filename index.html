@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Gabriel Marcelino — Portfólio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+  <style>
+    :root{--neon:#00f6ff;--accent:#8b5cf6;--glass-bg:rgba(255,255,255,0.04);--glass-border:rgba(255,255,255,0.06);}    
+    html,body{height:100%;font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;}
+    body{margin:0; background:linear-gradient(180deg,#030417 0%, #071028 60%); color:#e6eef8;}
+    .light{background:linear-gradient(180deg,#f6f8fb 0%, #ffffff 60%); color:#071022}
+    .glass{background:var(--glass-bg);backdrop-filter: blur(8px);border:1px solid var(--glass-border);}
+    .light .glass{--glass-bg:rgba(0,0,0,0.03);--glass-border:rgba(0,0,0,0.06);}    
+    .neon-border{box-shadow:0 8px 40px rgba(0,246,255,0.06), inset 0 -1px 0 rgba(255,255,255,0.02);}    
+    .container{max-width:1100px;margin:0 auto;padding:28px;}
+    header{position:sticky;top:12px;z-index:40}
+    .logo{width:56px;height:56px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:800;background:linear-gradient(135deg,#06b6d4,#7c3aed);color:#071022}
+    a{color:inherit;text-decoration:none}
+    .muted{color:rgba(230,238,248,0.75)}
+    .muted-dark{color:rgba(10,20,30,0.75)}
+    .smooth-scroll{scroll-behavior:smooth}
+    .chip{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);padding:8px;border-radius:999px;display:flex;align-items:center;}
+    .floating-controls{position:fixed;right:18px;bottom:24px;display:flex;flex-direction:column;gap:8px;z-index:60}
+    .timeline::before{content:'';position:absolute;left:28px;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--neon),transparent);}
+    @media (max-width:768px){ .container{padding:16px;} .desktop-only{display:none;} .logo{width:48px;height:48px} }
+  </style>
+</head>
+<body class="smooth-scroll">
+  <header class="container flex items-center justify-between gap-4">
+    <div class="flex items-center gap-4">
+      <div id="logo" class="logo neon-border" title="Gabriel Marcelino">GM</div>
+      <div>
+        <div id="displayName" class="text-lg font-extrabold">Gabriel Marcelino</div>
+        <div id="displayRole" class="text-sm muted">Frontend Engineer · Produto & Experiência</div>
+      </div>
+    </div>
+
+    <nav class="hidden md:flex items-center gap-4 desktop-only">
+      <a href="#about" class="text-sm muted" id="navAbout">Sobre</a>
+      <a href="#journey" class="text-sm muted" id="navJourney">Trajetória</a>
+      <a href="#skills" class="text-sm muted" id="navSkills">Skills</a>
+      <a href="#projects" class="text-sm muted" id="navProjects">Projetos</a>
+      <a href="#contact" class="text-sm muted" id="navContact">Contato</a>
+    </nav>
+
+    <div class="flex items-center gap-3">
+      <div class="chip" title="Trocar tema">
+        <button id="themeFloat" class="px-3 py-1 rounded">Light</button>
+      </div>
+      <div class="chip" title="Trocar idioma">
+        <select id="langFloat" class="bg-transparent border-none outline-none">
+          <option value="pt">PT</option>
+          <option value="en">EN</option>
+          <option value="es">ES</option>
+        </select>
+      </div>
+
+      <select id="langSelectHeader" aria-label="Idioma" class="rounded px-3 py-1 bg-transparent border border-white/10 text-sm">
+        <option value="pt">PT</option>
+        <option value="en">EN</option>
+        <option value="es">ES</option>
+      </select>
+      <button id="themeToggle" aria-label="Alternar tema" class="px-3 py-1 rounded border border-white/8 text-sm glass">Light</button>
+    </div>
+  </header>
+
+  <main class="container space-y-8">
+    <!-- HERO -->
+    <section id="about" class="grid md:grid-cols-2 gap-6 items-start">
+      <div>
+        <div class="text-sm text-cyan-300 uppercase" id="heroTagline">Portfólio • Frontend • Produto</div>
+        <h1 id="heroTitle" class="text-3xl md:text-4xl font-extrabold mt-2">Eu converto problemas complexos em interfaces produtivas — e bonitas.</h1>
+        <p id="heroDesc" class="mt-4 muted">Sou Gabriel — Engenheiro Frontend com foco em produto, performance e design system. Abaixo está um resumo da minha trajetória e trabalhos.</p>
+        <div class="mt-6 flex gap-3">
+          <a href="#journey" class="px-4 py-2 rounded-full glass" id="btnJourney">Ver trajetória</a>
+          <a href="#projects" class="px-4 py-2 rounded-full" style="background:linear-gradient(90deg,var(--neon),var(--accent));color:#071022" id="btnProjects">Projetos</a>
+        </div>
+        <div class="mt-6 grid grid-cols-3 gap-3">
+          <div class="glass p-3 rounded-lg text-center">
+            <div class="text-sm muted">Nível</div>
+            <div class="font-semibold">Sênior • 24</div>
+          </div>
+          <div class="glass p-3 rounded-lg text-center">
+            <div class="text-sm muted">XP</div>
+            <div id="xpValue" class="font-semibold">3.2k</div>
+          </div>
+          <div class="glass p-3 rounded-lg text-center">
+            <div class="text-sm muted">Badges</div>
+            <div class="font-semibold">UI • Perf • API</div>
+          </div>
+        </div>
+      </div>
+      <div class="glass p-5 rounded-2xl neon-border">
+        <h3 class="font-semibold">Mini-dashboard</h3>
+        <canvas id="miniChart" height="140"></canvas>
+        <div class="text-sm muted mt-2">Visão: tempo gasto por tipo de task.</div>
+      </div>
+    </section>
+
+    <!-- JOURNEY / TIMELINE -->
+    <section id="journey">
+      <h2 class="text-2xl font-semibold">Trajetória</h2>
+      <div id="timeline" class="mt-6 space-y-4 relative"></div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <h2 class="text-2xl font-semibold">Skills</h2>
+      <div id="skillsGrid" class="mt-4 grid md:grid-cols-3 gap-4"></div>
+
+      <div class="mt-6 glass p-4 rounded-xl flex items-center gap-4">
+        <div class="flex-1">
+          <div class="flex justify-between text-sm muted"><div>XP para próximo nível</div><div id="xpPercent">62%</div></div>
+          <div class="mt-2 xp-bar rounded-full overflow-hidden" style="height:12px;background:linear-gradient(90deg,rgba(255,255,255,0.03), rgba(255,255,255,0.02));"><div id="xpFill" style="width:62%" class="h-full" style="background:linear-gradient(90deg,var(--neon),var(--accent))"></div></div>
+        </div>
+        <div class="w-36 text-right text-sm muted">Progresso de carreira</div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <h2 class="text-2xl font-semibold">Projetos em destaque</h2>
+      <div class="mt-4 grid md:grid-cols-3 gap-4">
+        <div class="glass p-4 rounded-lg">
+          <h3 class="font-semibold">Design System Público</h3>
+          <p class="muted text-sm mt-2">Biblioteca React, tokens e docs.</p>
+        </div>
+        <div class="glass p-4 rounded-lg">
+          <h3 class="font-semibold">Micro-frontend Platform</h3>
+          <p class="muted text-sm mt-2">Integração e deploys isolados.</p>
+        </div>
+        <div class="glass p-4 rounded-lg">
+          <h3 class="font-semibold">Performance Sprint</h3>
+          <p class="muted text-sm mt-2">Observability, testes e otimizações.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tools -->
+    <section id="tools" class="grid md:grid-cols-3 gap-4">
+      <div class="glass p-4 rounded-lg">
+        <h3 class="font-semibold">Simulador de Salário</h3>
+        <div class="mt-3">
+          <button id="detectLoc" class="px-3 py-2 rounded border">Detectar localização</button>
+          <div id="locResult" class="mt-2 muted text-sm">Nenhuma localização.</div>
+        </div>
+        <div class="mt-3">
+          <select id="seniority" class="w-full mt-2 rounded-md border px-3 py-2 bg-transparent text-sm">
+            <option value="0.7">Júnior</option>
+            <option value="1" selected>Pleno</option>
+            <option value="1.5">Sênior</option>
+          </select>
+          <div class="mt-3 font-bold" id="salaryResult">—</div>
+        </div>
+      </div>
+
+      <div class="glass p-4 rounded-lg">
+        <h3 class="font-semibold">Chatzinho (demo)</h3>
+        <div class="mt-3 flex gap-2">
+          <input id="chatInput" class="flex-1 rounded-md border px-3 py-2 bg-transparent text-sm" placeholder="Pergunte sobre meus projetos..."/>
+          <button id="sendChat" class="px-3 py-2 rounded border">Enviar</button>
+        </div>
+        <div id="chatLog" class="mt-3 text-sm max-h-32 overflow-auto muted"></div>
+      </div>
+
+      <div class="glass p-4 rounded-lg">
+        <h3 class="font-semibold">Leitor de CV (PDF)</h3>
+        <div id="dropArea" class="mt-3 border-2 border-dashed rounded-lg p-4 text-center muted cursor-pointer">Arraste um PDF ou clique</div>
+        <input id="pdfInput" type="file" accept="application/pdf" class="hidden" />
+        <div id="pdfText" class="mt-3 text-sm muted max-h-40 overflow-auto whitespace-pre-wrap"></div>
+        <div class="mt-3"><a id="downloadCv" class="px-4 py-2 rounded-full" style="background:linear-gradient(90deg,var(--neon),var(--accent));color:#071022;font-weight:600" href="#">Baixar CV</a></div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="glass p-4 rounded-lg flex items-center justify-between">
+      <div>
+        <div class="font-semibold contact-title">Pronto para conversar?</div>
+        <div class="muted">gabriel@example.com • São Paulo, BR</div>
+      </div>
+      <div class="text-right">
+        <div class="text-xs muted">Disponível para contratação — remoto / híbrido</div>
+        <div class="mt-2"><a href="#" class="px-4 py-2 rounded-full" style="background:linear-gradient(90deg,var(--neon),var(--accent));color:#071022;font-weight:600">Agendar call</a></div>
+      </div>
+    </section>
+
+    <footer class="text-center muted text-xs mt-6">© Gabriel Marcelino — Portfólio</footer>
+  </main>
+
+<script>
+/* ================= CONFIG ================= */
+const TRAJECTORY=[
+  {year:2019,title:{pt:'Início na Programação',en:'Started Programming',es:'Inicio en Programación'},desc:{pt:'Comecei aprendendo HTML, CSS e JavaScript.',en:'Started learning HTML, CSS and JavaScript.',es:'Comencé aprendiendo HTML, CSS y JavaScript.'}},
+  {year:2021,title:{pt:'Primeiro Projeto Profissional',en:'First Professional Project',es:'Primer Proyecto Profesional'},desc:{pt:'Trabalhei em sites para pequenos negócios.',en:'Built websites for small businesses.',es:'Trabajé en sitios para pequeñas empresas.'}},
+  {year:2023,title:{pt:'Design System e React',en:'Design System & React',es:'Design System y React'},desc:{pt:'Criei componentes reutilizáveis e melhorei performance.',en:'Built reusable components and improved performance.',es:'Creé componentes reutilizables y mejoré el rendimiento.'}},
+  {year:2025,title:{pt:'Engenheiro Frontend',en:'Frontend Engineer',es:'Ingeniero Frontend'},desc:{pt:'Atuo em produtos com foco em experiência do usuário.',en:'Working on products focused on user experience.',es:'Trabajo en productos centrados en la experiencia de usuario.'}}
+];
+
+const SKILLS=[
+  {name:{pt:'JavaScript',en:'JavaScript',es:'JavaScript'},level:92},
+  {name:{pt:'React',en:'React',es:'React'},level:88},
+  {name:{pt:'HTML/CSS',en:'HTML/CSS',es:'HTML/CSS'},level:96},
+  {name:{pt:'Design Systems',en:'Design Systems',es:'Design Systems'},level:82},
+  {name:{pt:'UX',en:'UX',es:'UX'},level:80},
+  {name:{pt:'CI/CD',en:'CI/CD',es:'CI/CD'},level:70}
+];
+
+const DICT={
+  pt:{about:'Sobre',trajectory:'Trajetória',skills:'Skills',projects:'Projetos',contact:'Contato',detectLoc:'Detectar localização',salaryApprox:'≈ R$ {0}/mês',ready:'Pronto para conversar?',locationNone:'Nenhuma localização.',locationDetecting:'Detectando...',locationError:'Erro ao detectar',seniority:['Júnior','Pleno','Sênior'],chatPlaceholder:'Pergunte sobre meus projetos...',chatProcessing:'Processando...',chatDemo:'Demo: posso descrever os projetos ou gerar resumo técnico.',pdfDrop:'Arraste um PDF ou clique',pdfNoText:'Sem texto extraído.',pdfProcessing:'Processando...',pdfError:'Envie um PDF válido',scheduleCall:'Agendar call',themeLight:'Modo Claro',themeDark:'Modo Escuro'},
+  en:{about:'About',trajectory:'Journey',skills:'Skills',projects:'Projects',contact:'Contact',detectLoc:'Detect location',salaryApprox:'≈ $ {0}/mo',ready:'Ready to chat?',locationNone:'No location.',locationDetecting:'Detecting...',locationError:'Error detecting',seniority:['Junior','Mid','Senior'],chatPlaceholder:'Ask about my projects...',chatProcessing:'Processing...',chatDemo:'Demo: I can describe projects or generate a technical summary.',pdfDrop:'Drag a PDF or click',pdfNoText:'No text extracted.',pdfProcessing:'Processing...',pdfError:'Please upload a valid PDF',scheduleCall:'Schedule call',themeLight:'Light Mode',themeDark:'Dark Mode'},
+  es:{about:'Sobre',trajectory:'Trayectoria',skills:'Habilidades',projects:'Proyectos',contact:'Contacto',detectLoc:'Detectar ubicación',salaryApprox:'≈ R$ {0}/mes',ready:'¿Listo para conversar?',locationNone:'Sin ubicación.',locationDetecting:'Detectando...',locationError:'Error al detectar',seniority:['Junior','Medio','Senior'],chatPlaceholder:'Pregunta sobre mis proyectos...',chatProcessing:'Procesando...',chatDemo:'Demo: puedo describir los proyectos o generar un resumen técnico.',pdfDrop:'Arrastra un PDF o haz clic',pdfNoText:'Sin texto extraído.',pdfProcessing:'Procesando...',pdfError:'Envía un PDF válido',scheduleCall:'Agendar llamada',themeLight:'Modo Claro',themeDark:'Modo Oscuro'}
+};
+
+const HERO_TITLE={pt:'Eu converto problemas complexos em interfaces produtivas — e bonitas.',en:'I turn complex problems into productive — and beautiful — interfaces.',es:'Convierto problemas complejos en interfaces productivas — y bonitas.'};
+const HERO_DESC={pt:'Sou Gabriel — Engenheiro Frontend com foco em produto, performance e design system. Abaixo está um resumo da minha trajetória e trabalhos.',en:'I\'m Gabriel — Frontend Engineer focused on product, performance and design systems. Below is a summary of my trajectory and work.',es:'Soy Gabriel — Ingeniero Frontend centrado en producto, rendimiento y sistemas de diseño. A continuación un resumen de mi trayectoria y trabajos.'};
+
+/* ================= THEME ================= */
+const themeToggle=document.getElementById('themeToggle');
+const themeFloat=document.getElementById('themeFloat');
+
+function applyTheme(mode){
+  const body=document.body;
+  if(mode==='light'){
+    body.classList.add('light'); body.style.background='linear-gradient(180deg,#f6f8fb 0%, #ffffff 60%)'; body.style.color='#071022';
+    themeToggle.textContent=DICT[getLang()].themeDark; themeFloat.textContent=DICT[getLang()].themeDark;
+  } else {
+    body.classList.remove('light'); body.style.background='linear-gradient(180deg,#030417 0%, #071028 60%)'; body.style.color='#e6eef8';
+    themeToggle.textContent=DICT[getLang()].themeLight; themeFloat.textContent=DICT[getLang()].themeLight;
+  }
+  localStorage.setItem('theme',mode);
+}
+themeToggle.addEventListener('click',()=>applyTheme(localStorage.getItem('theme')==='dark'?'light':'dark'));
+themeFloat.addEventListener('click',()=>themeToggle.click());
+
+/* ================= LANGUAGE ================= */
+const langSelectHeader=document.getElementById('langSelectHeader');
+const langFloat=document.getElementById('langFloat');
+
+function getLang(){return localStorage.getItem('lang')||'pt';}
+function applyLang(lang){
+  localStorage.setItem('lang',lang);
+  langSelectHeader.value=lang; langFloat.value=lang;
+  document.getElementById('displayRole').textContent=lang==='pt'?'Engenheiro Frontend · Produto & Experiência':lang==='en'?'Frontend Engineer · Product & Experience':'Ingeniero Frontend · Producto & Experiencia';
+  document.getElementById('heroTitle').textContent=HERO_TITLE[lang];
+  document.getElementById('heroDesc').textContent=HERO_DESC[lang];
+  document.getElementById('navAbout').textContent=DICT[lang].about;
+  document.getElementById('journey').querySelector('h2').textContent=DICT[lang].trajectory;
+  document.getElementById('skills').querySelector('h2').textContent=DICT[lang].skills;
+  document.getElementById('projects').querySelector('h2').textContent=DICT[lang].projects;
+  document.querySelector('.contact-title').textContent=DICT[lang].ready;
+  document.getElementById('chatInput').placeholder=DICT[lang].chatPlaceholder;
+  document.getElementById('detectLoc').textContent=DICT[lang].detectLoc;
+  document.getElementById('pdfInput').setAttribute('title',DICT[lang].pdfDrop);
+  document.getElementById('downloadCv').textContent=DICT[lang].scheduleCall;
+  renderTimeline(lang); renderSkills(lang); applyTheme(localStorage.getItem('theme')||'dark');
+}
+langSelectHeader.addEventListener('change',()=>applyLang(langSelectHeader.value));
+langFloat.addEventListener('change',()=>applyLang(langFloat.value));
+
+/* ================= RENDER ================= */
+function renderTimeline(lang){
+  const container=document.getElementById('timeline'); container.innerHTML='';
+  TRAJECTORY.forEach(item=>{
+    const el=document.createElement('div'); el.className='glass p-4 rounded-lg relative';
+    el.innerHTML=`<div class="flex items-start gap-4"><div class="w-20 text-right"><div class="text-xs muted">${item.year}</div><div class="font-semibold mt-1">${item.title[lang]}</div></div><div class="text-sm muted">${item.desc[lang]}</div></div>`;
+    container.appendChild(el);
+  });
+}
+
+function renderSkills(lang){
+  const grid=document.getElementById('skillsGrid'); grid.innerHTML='';
+  SKILLS.forEach(s=>{
+    const box=document.createElement('div'); box.className='glass p-4 rounded-lg';
+    box.innerHTML=`<div class="flex justify-between items-baseline"><div class="font-semibold">${s.name[lang]}</div><div class="text-sm muted">${s.level}%</div></div><div class="mt-2 rounded-full overflow-hidden h-3"><div style="width:${s.level}%;height:100%;background:linear-gradient(90deg,var(--neon),var(--accent))"></div></div>`;
+    grid.appendChild(box);
+  });
+}
+
+/* ================= SALARY ================= */
+(function(){
+  const detect=document.getElementById('detectLoc'), loc=document.getElementById('locResult'), salaryResult=document.getElementById('salaryResult');
+  let region=null;
+  detect.addEventListener('click',()=>{
+    const lang=getLang();
+    if(!navigator.geolocation) return loc.textContent=DICT[lang].locationError;
+    loc.textContent=DICT[lang].locationDetecting;
+    navigator.geolocation.getCurrentPosition(p=>{
+      const lon=p.coords.longitude;
+      region=lon>-30&&lon<60?'Europa/Africa':lon>=-130&&lon<=-30?'Americas':'Asia/Oceania';
+      loc.textContent=`Região: ${region}`; updateSalary();
+    },()=>loc.textContent=DICT[lang].locationError);
+  });
+  document.getElementById('seniority').addEventListener('change',updateSalary);
+  function updateSalary(){
+    const mul=parseFloat(document.getElementById('seniority').value||1);
+    const base=region==='Americas'?7000:region==='Europa/Africa'?8000:6000;
+    const est=Math.round(base*mul);
+    salaryResult.textContent=DICT[getLang()].salaryApprox.replace('{0}',est.toLocaleString('pt-BR'));
+  }
+})();
+
+/* ================= CHAT ================= */
+(function(){
+  const input=document.getElementById('chatInput'), send=document.getElementById('sendChat'), log=document.getElementById('chatLog');
+  send.addEventListener('click',()=>{
+    const q=input.value.trim(); if(!q) return;
+    append('Você',q); input.value=''; append('Bot',DICT[getLang()].chatProcessing);
+    setTimeout(()=>{log.lastChild.textContent=DICT[getLang()].chatDemo;},700);
+  });
+  function append(w,t){const el=document.createElement('div'); el.className='py-1'; el.innerHTML=`<strong style="color:var(--neon)">${w}:</strong> <span class="ml-2">${t}</span>`; log.appendChild(el); log.scrollTop=log.scrollHeight;}
+})();
+
+/* ================= PDF ================= */
+(function(){
+  const drop=document.getElementById('dropArea'), input=document.getElementById('pdfInput'), out=document.getElementById('pdfText');
+  drop.addEventListener('click',()=>input.click());
+  drop.addEventListener('dragover',e=>{e.preventDefault(); drop.classList.add('ring-2','ring-cyan-400');});
+  drop.addEventListener('dragleave',()=>drop.classList.remove('ring-2','ring-cyan-400'));
+  drop.addEventListener('drop',e=>{e.preventDefault(); drop.classList.remove('ring-2','ring-cyan-400'); handleFile(e.dataTransfer.files[0]);});
+  input.addEventListener('change',e=>handleFile(e.target.files[0]));
+  async function handleFile(file){
+    const lang=getLang();
+    if(!file){out.textContent=DICT[lang].pdfNoText; return;}
+    if(!file.type.includes('pdf')){out.textContent=DICT[lang].pdfError; return;}
+    out.textContent=DICT[lang].pdfProcessing;
+    const array=await file.arrayBuffer();
+    const pdf=await pdfjsLib.getDocument({data:array}).promise;
+    let text='';
+    for(let i=1;i<=Math.min(pdf.numPages,6);i++){
+      const page=await pdf.getPage(i);
+      const content=await page.getTextContent();
+      text+=content.items.map(it=>it.str).join(' ')+'\n\n';
+    }
+    out.textContent=text||DICT[lang].pdfNoText;
+  }
+})();
+
+/* ================= DEV EASTER EGG ================= */
+(function(){
+  const logo=document.getElementById('logo'); let clicks=0,timer;
+  logo.addEventListener('click',()=>{
+    clicks++; clearTimeout(timer);
+    timer=setTimeout(()=>clicks=0,1200);
+    if(clicks>=5){clicks=0; toggleDev();}
+  });
+  function toggleDev(){
+    let panel=document.getElementById('devPanel');
+    if(!panel){panel=document.createElement('div'); panel.id='devPanel'; panel.className='fixed right-4 bottom-4 glass p-3 rounded-lg'; panel.innerHTML='<div class="font-semibold">DEV MODE</div><div class="text-sm muted">Extras habilitados</div>'; document.body.appendChild(panel);}
+    else panel.remove();
+  }
+})();
+
+/* ================= INITIAL ================= */
+(function(){const lang=getLang(); applyLang(lang); const theme=localStorage.getItem('theme')||'dark'; applyTheme(theme);})();
+</script>
+</body>
+</html>

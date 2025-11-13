@@ -1,0 +1,18 @@
+/* Custom styles for additional flair */
+body.recruiter-mode {
+  font-family: 'Arial', sans-serif;
+}
+
+#avatar {
+  background: url('https://source.unsplash.com/random/100x100/?avatar');
+  background-size: cover;
+}
+
+.animate-bounce {
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}

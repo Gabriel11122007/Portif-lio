@@ -1,0 +1,78 @@
+ <script>
+  const themeToggle = document.getElementById('theme-toggle');
+  const themePanel = document.getElementById('theme-panel');
+  const themeClose = document.getElementById('theme-close');
+  const modeBtns = document.querySelectorAll('.mode-btn');
+  const primaryColorInput = document.getElementById('primary-color');
+  const presetBtns = document.querySelectorAll('.preset-color');
+  const resetBtn = document.getElementById('reset-theme');
+  const applyBtn = document.getElementById('apply-theme');
+
+  const THEME_KEY = 'ggm_theme_v1';
+  const defaultState = { mode: 'auto', primary: '#60a5fa' };
+  let themeState = JSON.parse(localStorage.getItem(THEME_KEY)) || { ...defaultState };
+
+  function applyTheme(state) {
+    document.documentElement.classList.remove('theme-light','theme-dark');
+    if(state.mode === 'light') document.documentElement.classList.add('theme-light');
+    else if(state.mode === 'dark') document.documentElement.classList.add('theme-dark');
+    else {
+      if(window.matchMedia('(prefers-color-scheme: light)').matches) document.documentElement.classList.add('theme-light');
+    }
+    document.documentElement.style.setProperty('--primary', state.primary);
+    primaryColorInput.value = state.primary;
+    applyBtn.style.background = state.primary;
+    if(typeof initParticles === 'function') initParticles(state.primary);
+  }
+
+  // Aplicar imediatamente
+  applyTheme(themeState);
+
+  // Abrir/fechar painel
+  themeToggle.addEventListener('click', ()=> themePanel.classList.toggle('hidden'));
+  themeClose.addEventListener('click', ()=> themePanel.classList.add('hidden'));
+
+  // Mudar modo instantâneo
+  modeBtns.forEach(btn => {
+    btn.addEventListener('click', ()=>{
+      themeState.mode = btn.dataset.mode;
+      applyTheme(themeState);
+      // efeito visual rápido
+      modeBtns.forEach(b=>b.classList.remove('ring','ring-2','ring-offset-1'));
+      btn.classList.add('ring','ring-2','ring-offset-1');
+    });
+  });
+
+  // Cor primária instantânea
+  primaryColorInput.addEventListener('input', e=>{
+    themeState.primary = e.target.value;
+    applyTheme(themeState);
+  });
+
+  // Presets instantâneos
+  presetBtns.forEach(btn => btn.addEventListener('click', ()=>{
+    primaryColorInput.value = btn.dataset.color;
+    primaryColorInput.dispatchEvent(new Event('input'));
+  }));
+
+  // Botão aplicar = apenas salva
+  applyBtn.addEventListener('click', ()=>{ localStorage.setItem(THEME_KEY, JSON.stringify(themeState)); });
+
+  // Reset = aplica e salva
+  resetBtn.addEventListener('click', ()=>{
+    themeState = { ...defaultState };
+    localStorage.setItem(THEME_KEY, JSON.stringify(themeState));
+    applyTheme(themeState);
+  });
+
+  // Auto mode detecta mudanças do sistema
+  if(window.matchMedia) window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', ()=>{
+    if(themeState.mode==='auto') applyTheme(themeState);
+  });
+
+  // Fechar painel com ESC ou clique fora
+  document.addEventListener('keydown', e=>{ if(e.key==='Escape') themePanel.classList.add('hidden'); });
+  document.addEventListener('click', e=>{
+    if(!e.target.closest('#theme-panel') && !e.target.closest('#theme-toggle')) themePanel.classList.add('hidden');
+  });
+</script>

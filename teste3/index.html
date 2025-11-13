@@ -1,0 +1,554 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gabriel Gazeta Marcelino — Engenheiro de Software & Desenvolvedor Web</title>
+  <meta name="description" content="Portfólio profissional de Gabriel Gazeta Marcelino — Futuro Engenheiro de Software e Desenvolvedor Web Full Stack." />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- AOS (animações de rolagem) -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <!-- Particles.js -->
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+  <style>
+    /* ------- VARIÁVEIS E THEMING ------- */
+    :root{
+      --bg: #050816;
+      --card: #0b1020;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --primary: #60a5fa; /* azul */
+      --accent: #a78bfa; /* roxo */
+      --border: rgba(99,102,241,0.18);
+      --tooltip-bg: rgba(79,70,229,0.95);
+      --glass: rgba(255,255,255,0.03);
+    }
+
+    /* Light theme overrides (applied via .theme-light no need to duplicate too much) */
+    .theme-light{
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --text: #0f172a;
+      --muted: #64748b;
+      --primary: #2563eb;
+      --accent: #7c3aed;
+      --border: rgba(37,99,235,0.12);
+      --tooltip-bg: rgba(37,99,235,0.95);
+      --glass: rgba(0,0,0,0.03);
+    }
+
+    html { scroll-behavior: smooth; }
+    body { overflow-x: hidden; transition: background 0.25s ease, color 0.25s ease; background: var(--bg); color: var(--text); }
+
+    .gradient-text {
+      background: linear-gradient(90deg, var(--primary), var(--accent), #38bdf8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradientShift 6s infinite alternate;
+    }
+    @keyframes gradientShift {
+      0% { filter: hue-rotate(0deg); }
+      100% { filter: hue-rotate(90deg); }
+    }
+
+    #particles-js { position: absolute; width: 100%; height: 100%; z-index: 0; top: 0; left: 0; }
+
+    .parallax { background-image: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1600&q=80'); background-attachment: fixed; background-size: cover; background-position: center; }
+
+    /* Card / modal */
+    #avatar-modal { backdrop-filter: blur(8px); background-color: rgba(0,0,0,0.6); }
+
+    /* Theme panel */
+    .particula { width: 300px; background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border: 1px solid var(--border); color: var(--text); }
+
+    /* Tooltip styling uses variable */
+    #tooltip { background: var(--tooltip-bg); }
+
+    /* small responsive polish */
+    @media (max-width: 640px){ .particula{ width: 90vw;} }
+
+    /* ensure images/icons adapt */
+    img { image-rendering: auto; }
+
+    .skill {
+  position: relative;
+}
+
+.tooltip {
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.skill:hover .tooltip {
+  opacity: 1;
+}
+
+strong a{
+  text-decoration: underline;
+}
+
+  </style>
+</head>
+<body class="font-sans antialiased relative" data-theme>
+
+  <!-- HEADER -->
+<header class="fixed top-0 left-0 w-full bg-[color:var(--glass)]/80 backdrop-blur-md z-50 border-b" style="border-color:var(--border);">
+    <nav class="max-w-6xl mx-auto px-4 sm:px-6 flex justify-between items-center h-20 relative">
+      <div class="flex items-center gap-4">
+        <h1 class="text-2xl font-extrabold gradient-text tracking-wide">Gabriel Gazeta</h1>
+      </div>
+
+      <ul class="hidden md:flex gap-6 text-sm font-medium">
+        <li><a href="#sobre" class="hover:text-indigo-400 transition" style="color:var(--text)">Sobre</a></li>
+        <li><a href="#trajeto" class="hover:text-indigo-400 transition" style="color:var(--text)">Trajetória</a></li>
+        <li><a href="#habilidades" class="hover:text-indigo-400 transition" style="color:var(--text)">Habilidades</a></li>
+        <li><a href="#projetos" class="hover:text-indigo-400 transition" style="color:var(--text)">Projetos</a></li>
+        <li><a href="#contato" class="hover:text-indigo-400 transition" style="color:var(--text)">Contato</a></li>
+      </ul>
+
+    </nav>
+        <div id="particula"></div>
+</header>
+
+ <!-- HERO -->
+<section id="hero" class="relative flex flex-col justify-center items-center text-center min-h-screen pt-32 overflow-hidden">
+  <div id="particles-js"></div>
+
+  <div class="relative z-10 flex flex-col items-center max-w-3xl px-6">
+    <!-- FOTO / AVATAR -->
+    <div class="relative mb-8" data-aos="zoom-in">
+      <img id="avatar" src="avatar.jpg" alt="Gabriel Marcelino" 
+           class="w-40 h-40 sm:w-48 sm:h-48 rounded-full border-4 border-[color:var(--primary)] shadow-lg hover:scale-105 transition-transform duration-500 cursor-pointer" />
+      <div class="absolute inset-0 rounded-full" style="box-shadow:0 8px 30px rgba(0,0,0,0.25)"></div>
+    </div>
+
+    <h2 class="text-5xl sm:text-6xl font-extrabold mb-6 gradient-text" data-aos="zoom-in">
+      Futuro Engenheiro de Software<br> & Desenvolvedor Full Stack
+    </h2>
+
+    <p class="text-[color:var(--muted)] text-lg mb-8" data-aos="fade-up">
+      Criando soluções digitais modernas, eficientes e inteligentes.<br>
+      Transformando ideias em experiências tecnológicas reais.
+    </p>
+
+    <div class="flex flex-wrap justify-center gap-4" data-aos="zoom-in-up">
+      <a href="#contato" class="px-6 py-3 rounded-lg font-semibold hover:opacity-95 transition" style="background:var(--primary); color:white">Entrar em Contato</a>
+      <a href="#trajeto" class="px-6 py-3 border rounded-lg font-semibold hover:bg-[color:var(--glass)] transition" style="border-color:var(--border); color:var(--text)">Conhecer Trajetória</a>
+    </div>
+  </div> 
+  <br><br><br>
+
+  <div class="absolute bottom-10 text-[color:var(--muted)] text-sm animate-bounce" data-aos="zoom-in-up">
+    ↓ Role para explorar
+  </div>
+</section>
+
+<!-- MODAL DO AVATAR -->
+<div id="avatar-modal" class="hidden fixed inset-0 flex justify-center items-center z-50">
+  <img src="avatar.jpg" class="w-96 h-96 rounded-full border-8" style="border-color:var(--primary)" />
+</div>
+
+<!-- PARALLAX -->
+<div class="parallax w-full h-64 flex items-center justify-center text-center">
+  <h3 class="text-3xl font-bold text-white bg-black/50 px-6 py-3 rounded-lg">Codificando o Futuro 🚀</h3>
+</div>
+
+  <!-- SOBRE -->
+  <section id="sobre" class="max-w-5xl mx-auto px-6 py-20" data-aos="fade-up">
+    <h3 class="text-3xl font-bold mb-6 gradient-text">Sobre Mim</h3>
+    <p class="text-[color:var(--muted)] leading-relaxed">
+      Meu nome é <strong>Gabriel Gazeta Marcelino</strong>, nasci em 11/12/2007 e tenho <span id="idade"></span> anos.
+      Sou estudante de <strong>Engenharia de Software</strong> na <strong>UNAERP</strong> — Ribeirão Preto - SP.
+      Apaixonado por tecnologia e inovação, busco criar soluções escaláveis, funcionais e com design moderno.
+    </p>
+  </section>
+
+<!-- TRAJETÓRIA -->
+<section id="trajeto" class="py-20">
+  <h3 class="text-3xl font-bold mb-12 text-center gradient-text" data-aos="fade-down">Minha Trajetória</h3>
+  <div class="relative max-w-5xl mx-auto px-6">
+    <!-- Linha central da timeline -->
+    <div id="timeline-line" class="absolute left-1/2 transform -translate-x-1/2 h-full w-1 rounded" style="background-color:var(--primary)"></div>
+
+    <!-- 1º item - esquerda -->
+    <div class="relative flex items-center justify-between mb-12" data-aos="fade-right">
+      <div class="w-5/12 text-right pr-6">
+        <h4 class="font-semibold" style="color:var(--primary)">Primeiros Passos</h4>
+        <p class="text-[color:var(--muted)] text-sm">
+          Iniciei em programação em 2022, explorando <strong>HTML, CSS</strong> e <strong>JavaScript</strong>.
+        </p>
+      </div>
+      <div class="w-5 h-5 rounded-full" style="background-color:var(--primary)"></div>
+      <div class="w-5/12"></div>
+    </div>
+
+    <!-- 2º item - direita -->
+    <div class="relative flex items-center justify-between mb-12" data-aos="fade-left">
+      <div class="w-5/12"></div>
+      <div class="w-5 h-5 rounded-full" style="background-color:var(--primary)"></div>
+      <div class="w-5/12 pl-6">
+        <h4 class="font-semibold" style="color:var(--primary)">Curso Técnico — SENAI</h4>
+        <p class="text-[color:var(--muted)] text-sm">
+          Fiz cursos de programação pelo SENAI sendo eles <strong>AZ-900</strong>, <strong>AI-900</strong> aprendendo o Básico de programação.
+        </p>
+      </div>
+    </div>
+
+    <!-- 3º item - esquerda -->
+    <div class="relative flex items-center justify-between mb-12" data-aos="fade-right">
+      <div class="w-5/12 text-right pr-6">
+        <h4 class="font-semibold" style="color:var(--primary)">Curso Técnico — SENAI</h4>
+        <p class="text-[color:var(--muted)] text-sm">
+          Comecei o curso técnico do SENAI em <strong>Análise e Desenvolvimento de Sistemas</strong> — 2024–2025. Desenvolvendo lógica de programação e projetos reais. <br> <strong><a href="#projetos">Clique aqui para ir</a></strong>.
+        </p>
+      </div>
+      <div class="w-5 h-5 rounded-full" style="background-color:var(--primary)"></div>
+      <div class="w-5/12"></div>
+    </div>
+
+    <!-- 4º item - direita -->
+    <div class="relative flex items-center justify-between mb-12" data-aos="fade-left">
+      <div class="w-5/12"></div>
+      <div class="w-5 h-5 rounded-full" style="background-color:var(--primary)"></div>
+      <div class="w-5/12 pl-6">
+        <h4 class="font-semibold" style="color:var(--primary)">Processo Escolar</h4>
+        <p class="text-[color:var(--muted)] text-sm">
+          Terminando o <strong>Ensino Médio</strong> na escola <strong>SESI-227</strong> — 2025
+        </p>
+      </div>
+    </div>
+
+    <!-- 5º item - esquerda -->
+    <div class="relative flex items-center justify-between mb-12" data-aos="fade-right">
+      <div class="w-5/12 text-right pr-6">
+        <h4 class="font-semibold" style="color:var(--primary)">UNAERP</h4>
+        <p class="text-[color:var(--muted)] text-sm">
+          Cursando <strong>Engenharia de Software</strong>, focando em <strong>Full Stack</strong> e arquitetura de sistemas — 2025 - 202#.
+        </p>
+      </div>
+      <div class="w-5 h-5 rounded-full" style="background-color:var(--primary)"></div>
+      <div class="w-5/12"></div>
+    </div>
+
+    <!-- 6º item - direita -->
+    <div class="relative flex items-center justify-between mb-12" data-aos="fade-left">
+      <div class="w-5/12"></div>
+      <div class="w-5 h-5 rounded-full" style="background-color:var(--primary)"></div>
+      <div class="w-5/12 pl-6">
+        <h4 class="font-semibold" style="color:var(--primary)">Expansão de Competências</h4>
+        <p class="text-[color:var(--muted)] text-sm">
+          Aprendendo <strong>Python</strong> e aprofundando conhecimentos.
+        </p>
+      </div>
+    </div>
+
+    <!-- 7º item - esquerda -->
+    <div class="relative flex items-center justify-between" data-aos="fade-right">
+      <div class="w-5/12 text-right pr-6">
+        <h4 class="font-semibold" style="color:var(--primary)">Projetos Pessoais</h4>
+        <p class="text-[color:var(--muted)] text-sm">
+          Desenvolvimento de portfólio interativo, APIs em JS e projetos internos do SENAI. Experimentando sempre novas tecnologias.
+        </p>
+      </div>
+      <div class="w-5 h-5 rounded-full" style="background-color:var(--primary)"></div>
+      <div class="w-5/12"></div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- HABILIDADES (corrigido) -->
+<section id="habilidades" class="py-20 text-center relative" data-aos="fade-up">
+  <h3 class="text-3xl font-bold mb-10 gradient-text">Linguagens & Ferramentas</h3>
+
+  <div id="skills" class="flex flex-wrap justify-center gap-10 max-w-5xl mx-auto">
+    <!-- cada skill usa a cor primária para hover -->
+<div class="skill group relative flex flex-col items-center cursor-pointer" data-tooltip="HTML5 — Linguagem de marcação para estruturar páginas web.">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-plain.svg" class="w-16 transition-transform group-hover:scale-110" alt="HTML5" />
+  <span class="tooltip absolute bottom-full mb-2 hidden group-hover:block w-max max-w-xs bg-gray-800 text-white text-sm rounded py-1 px-2 text-center z-10">
+    HTML5 — Linguagem de marcação para estruturar páginas web.
+  </span>
+</div>
+
+<div class="skill group relative flex flex-col items-center cursor-pointer">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-plain.svg" class="w-16 transition-transform group-hover:scale-110" alt="CSS3" />
+  <span class="tooltip absolute bottom-full mb-2 hidden group-hover:block w-max max-w-xs bg-gray-800 text-white text-sm rounded py-1 px-2 text-center z-10">
+    CSS3 — Responsável pelo design e estilo das páginas.
+  </span>
+</div>
+
+<div class="skill group relative flex flex-col items-center cursor-pointer">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" class="w-16 transition-transform group-hover:scale-110" alt="JavaScript" />
+  <span class="tooltip absolute bottom-full mb-2 hidden group-hover:block w-max max-w-xs bg-gray-800 text-white text-sm rounded py-1 px-2 text-center z-10">
+    JavaScript — Adiciona interatividade e lógica aos sites.
+  </span>
+</div>
+
+<div class="skill group relative flex flex-col items-center cursor-pointer">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" class="w-16 transition-transform group-hover:scale-110" alt="React" />
+  <span class="tooltip absolute bottom-full mb-2 hidden group-hover:block w-max max-w-xs bg-gray-800 text-white text-sm rounded py-1 px-2 text-center z-10">
+    React — Biblioteca JavaScript para criar interfaces modernas.
+  </span>
+</div>
+
+<div class="skill group relative flex flex-col items-center cursor-pointer">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" class="w-16 transition-transform group-hover:scale-110" alt="PHP" />
+  <span class="tooltip absolute bottom-full mb-2 hidden group-hover:block w-max max-w-xs bg-gray-800 text-white text-sm rounded py-1 px-2 text-center z-10">
+    PHP — Linguagem para desenvolvimento de sistemas e back-end.
+  </span>
+</div>
+
+<div class="skill group relative flex flex-col items-center cursor-pointer">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" class="w-16 transition-transform group-hover:scale-110" alt="MySQL" />
+  <span class="tooltip absolute bottom-full mb-2 hidden group-hover:block w-max max-w-xs bg-gray-800 text-white text-sm rounded py-1 px-2 text-center z-10">
+    MySQL — Sistema de gerenciamento de banco de dados relacional.
+  </span>
+</div>
+
+<div class="skill group relative flex flex-col items-center cursor-pointer">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" class="w-16 transition-transform group-hover:scale-110" alt="Git" />
+  <span class="tooltip absolute bottom-full mb-2 hidden group-hover:block w-max max-w-xs bg-gray-800 text-white text-sm rounded py-1 px-2 text-center z-10">
+    Git — Controle de versão para projetos e colaboração em equipe.
+  </span>
+</div>
+
+<div class="skill group relative flex flex-col items-center cursor-pointer">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" class="w-16 opacity-70 transition-transform group-hover:scale-110" alt="Python" />
+  <span class="tooltip absolute bottom-full mb-2 hidden group-hover:block w-max max-w-xs bg-gray-800 text-white text-sm rounded py-1 px-2 text-center z-10">
+    Python — Linguagem versátil usada em automação e IA.
+  </span>
+</div>
+
+<!-- Tailwind CSS -->
+<div class="skill group relative flex flex-col items-center cursor-pointer">
+  <img src="tailwind.png"
+       class="w-16 transition-transform group-hover:scale-110" alt="Tailwind CSS" />
+  <span class="absolute bottom-full mb-2 hidden group-hover:block w-max max-w-xs bg-gray-800 text-white text-sm rounded py-1 px-2 text-center z-10">
+    Tailwind CSS — Framework utilitário para estilização rápida e responsiva.
+  </span>
+</div>
+
+<!-- Bootstrap -->
+<div class="skill group relative flex flex-col items-center cursor-pointer">
+  <img src="bootstrap.png"
+       class="w-16 transition-transform group-hover:scale-110" alt="Bootstrap" />
+  <span class="absolute bottom-full mb-2 hidden group-hover:block w-max max-w-xs bg-gray-800 text-white text-sm rounded py-1 px-2 text-center z-10">
+    Bootstrap — Framework CSS para criação rápida de sites responsivos e modernos.
+  </span>
+</div>
+
+  </div>
+
+  <!-- Tooltip flutuante (inicialmente invisível; controlado por JS) -->
+  <div id="tooltip" 
+       class="fixed px-3 py-2 text-sm rounded-lg text-white shadow-lg z-50 pointer-events-none transition-opacity duration-150"
+       style="display:none; opacity:0; transform:translateY(0.25rem);">
+  </div>
+</section>
+
+<!-- PROJETOS -->
+<section id="projetos" class="py-20">
+  <h3 class="text-3xl font-bold mb-10 text-center gradient-text" data-aos="fade-down">Projetos</h3>
+  <div class="max-w-6xl mx-auto px-6 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+
+    <!-- Projeto 1 -->
+    <div class="p-6 rounded-lg shadow-lg text-center hover:scale-[1.05] transition" data-aos="fade-up"
+         style="background-color:var(--card); border:1px solid var(--border)">
+      <h4 class="font-semibold mb-2" style="color:var(--primary)">Portfólio Interativo</h4>
+      <p class="text-[color:var(--muted)] text-sm mb-3">
+        Site pessoal moderno construído com <strong>HTML, CSS, JavaScript</strong> e <strong>Tailwind</strong>, contendo animações, partículas e temas dinâmicos.
+      </p>
+      <a href="https://github.com/Gabriel11122007/Portifolio" target="_blank" class="text-[color:var(--primary)] text-sm hover:underline">Ver no GitHub →</a> <br>
+      <a href="https://portifolio-seven-beige-29.vercel.app/" target="_blank" class="text-[color:var(--primary)] text-sm hover:underline">Ver na Internet →</a>
+    </div>
+
+    <!-- Projeto 2 -->
+    <div class="p-6 rounded-lg shadow-lg text-center hover:scale-[1.05] transition" data-aos="fade-up" data-aos-delay="100"
+         style="background-color:var(--card); border:1px solid var(--border)">
+      <h4 class="font-semibold mb-2" style="color:var(--primary)">Sistema de Login com Validação</h4>
+      <p class="text-[color:var(--muted)] text-sm mb-3">
+        Sistema completo de login e registro com animações e validação de dados utilizando <strong>HTML</strong>, <strong>CSS</strong>, <strong>Tailwind</strong> e <strong>JavaScript</strong>.
+      </p>
+      <a href="https://github.com/Gabriel11122007/cadastro" target="_blank" class="text-[color:var(--primary)] text-sm hover:underline">Ver no GitHub →</a> <br>
+      <a href="https://cadastro-snowy.vercel.app/" target="_blank" class="text-[color:var(--primary)] text-sm hover:underline">Ver na Internet →</a> 
+    </div>
+
+    <!-- Projeto 3 -->
+    <div class="p-6 rounded-lg shadow-lg text-center hover:scale-[1.05] transition" data-aos="fade-up" data-aos-delay="200"
+         style="background-color:var(--card); border:1px solid var(--border)">
+      <h4 class="font-semibold mb-2" style="color:var(--primary)">Blog sobre Inteligência Artificial</h4>
+      <p class="text-[color:var(--muted)] text-sm mb-3">
+        Blog criado para compartilhar conhecimentos sobre <strong>Inteligência Artificial</strong>, com layout limpo e responsivo.
+      </p>
+      <a href="https://github.com/Gabriel11122007/blog_IA" target="_blank" class="text-[color:var(--primary)] text-sm hover:underline">Ver no GitHub →</a> <br>
+      <a href="https://blog-ia-pied.vercel.app/" target="_blank" class="text-[color:var(--primary)] text-sm hover:underline">Ver na Internet →</a>
+    </div>
+
+    <!-- Projeto 4 -->
+    <div class="p-6 rounded-lg shadow-lg text-center hover:scale-[1.05] transition" data-aos="fade-up" data-aos-delay="300"
+         style="background-color:var(--card); border:1px solid var(--border)">
+      <h4 class="font-semibold mb-2" style="color:var(--primary)">RetroAquários — Projeto Criativo</h4>
+      <p class="text-[color:var(--muted)] text-sm mb-3">
+        Site fictício criado para a venda de um produto imaginário, idealizado pelos educadores 
+        <a href="https://www.linkedin.com/in/marcelo-bruno-fuentes-125732121/" target="_blank"><strong>Marcelo Bruno Fuentes</strong></a> e 
+        <a href="https://www.linkedin.com/in/josiane-matiolli-1501/" target="_blank"><strong>Josiane Matiolli</strong></a>, com foco em design e criatividade.
+      </p>
+      <a href="https://github.com/Gabriel11122007/retroaquarios" target="_blank" class="text-[color:var(--primary)] text-sm hover:underline">Ver no GitHub →</a> <br>
+      <a href="https://retroaquarios.vercel.app/" target="_blank" class="text-[color:var(--primary)] text-sm hover:underline">Ver na Internet →</a>
+    </div>
+
+    <!-- Projeto 5 -->
+    <div class="p-6 rounded-lg shadow-lg text-center hover:scale-[1.05] transition" data-aos="fade-up" data-aos-delay="400"
+         style="background-color:var(--card); border:1px solid var(--border)">
+      <h4 class="font-semibold mb-2" style="color:var(--primary)">Povos Originários do Brasil</h4>
+      <p class="text-[color:var(--muted)] text-sm mb-3">
+        Projeto escolar orientado por <strong>Luciana Pignatta</strong>, apresentando a cultura e história dos povos originários do Brasil, com foco educativo e visual envolvente.
+      </p>
+      <a href="https://github.com/Gabriel11122007/PovosOriginariosBrasil" target="_blank" class="text-[color:var(--primary)] text-sm hover:underline">Ver no GitHub →</a> <br>
+      <a href="https://povos-originarios-brasil.vercel.app/" target="_blank" class="text-[color:var(--primary)] text-sm hover:underline">Ver na Internet →</a>
+    </div>
+
+    <!-- Projeto 6 -->
+    <div class="p-6 rounded-lg shadow-lg text-center hover:scale-[1.05] transition" data-aos="fade-up" data-aos-delay="500"
+         style="background-color:var(--card); border:1px solid var(--border)">
+      <h4 class="font-semibold mb-2" style="color:var(--primary)">Contador de Horas Freelancer</h4>
+      <p class="text-[color:var(--muted)] text-sm mb-3">
+        Aplicação prática desenvolvida para facilitar o cálculo de horas trabalhadas por freelancers da família, automatizando somas e reduzindo erros em pagamentos.
+      </p>
+      <a href="https://github.com/Gabriel11122007/contador_de_horas_freelancer" target="_blank" class="text-[color:var(--primary)] text-sm hover:underline">Ver no GitHub →</a> <br>
+      <a href="https://contador-de-horas-freelancer.vercel.app/" target="_blank" class="text-[color:var(--primary)] text-sm hover:underline">Ver na Internet →</a>
+    </div>
+
+  </div>
+</section>
+
+
+  <!-- CONTATO -->
+  <section id="contato" class="max-w-5xl mx-auto px-6 py-20 text-center">
+    <h3 class="text-3xl font-bold mb-8 gradient-text">Contato</h3>
+    <p class="text-[color:var(--muted)] mb-6">Quer conversar ou colaborar? Me chame:</p>
+    <div class="flex justify-center gap-4">
+      <a href="mailto:ggabrielmarcelino@gmail.com" class="text-[color:var(--primary)] hover:opacity-90">Email</a>
+      <a href="https://instagram.com/gazeta_.72" target="_blank" class="text-[color:var(--primary)] hover:opacity-90">Instagram</a>
+      <a href="https://github.com/Gabriel11122007" target="_blank" class="text-[color:var(--primary)] hover:opacity-90">GitHub</a>
+      <a href="https://wa.me/5516997795333" target="_blank" class="text-[color:var(--primary)] hover:opacity-90">WhatsApp</a>
+    </div>
+  </section>
+
+  <footer class="text-center text-sm text-[color:var(--muted)] py-6 border-t" style="border-color:var(--border)">
+    © <span id="ano"></span> Gabriel Gazeta Marcelino — Todos os direitos reservados
+  </footer>
+
+
+ <!-- SCRIPTS -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 1200, once: false });
+
+    // Idade automática
+    const nasc = new Date(2007, 11, 11);
+    const hoje = new Date();
+    let idade = hoje.getFullYear() - nasc.getFullYear();
+    const m = hoje.getMonth() - nasc.getMonth();
+    if (m < 0 || (m === 0 && hoje.getDate() < nasc.getDate())) idade--;
+    document.getElementById('idade').textContent = idade;
+
+    // Ano automático
+    document.getElementById('ano').textContent = new Date().getFullYear();
+
+    // Partículas - cria função para atualizar cor
+    function initParticles(color){
+      try {
+        window.pJSDom && window.pJSDom.length && window.pJSDom.forEach(d => d.pJS.fn.vendors.destroypJS());
+      } catch(e){}
+      particlesJS('particles-js', {
+        particles: {
+          number: { value: 60, density: { enable: true, value_area: 800 } },
+          color: { value: color },
+          shape: { type: 'circle' },
+          opacity: { value: 0.45 },
+          size: { value: 3 },
+          move: { enable: true, speed: 2 }
+        },
+        interactivity: {
+          events: { onhover: { enable: true, mode: 'repulse' } },
+          modes: { repulse: { distance: 100 } }
+        }
+      });
+    }
+
+    // Tooltip logic (mantive a proposta anterior com pequenos ajustes)
+    (function () {
+      const tooltip = document.getElementById('tooltip');
+      const skills = document.querySelectorAll('#skills .skill');
+      let hideTimeout = null;
+
+      function showTooltip(text, clientX, clientY) {
+        tooltip.textContent = text;
+        tooltip.style.display = 'block';
+        tooltip.style.opacity = '1';
+        tooltip.style.transform = 'translateY(0)';
+        positionTooltip(clientX, clientY);
+      }
+
+      function hideTooltip() {
+        tooltip.style.opacity = '0';
+        tooltip.style.transform = 'translateY(0.25rem)';
+        if (hideTimeout) clearTimeout(hideTimeout);
+        hideTimeout = setTimeout(() => { tooltip.style.display = 'none'; }, 150);
+      }
+
+      function positionTooltip(clientX, clientY) {
+        const offsetX = 16; const offsetY = 8;
+        tooltip.style.left = '0px'; tooltip.style.top = '0px'; tooltip.style.maxWidth = '300px';
+        const rect = tooltip.getBoundingClientRect();
+        let left = clientX + offsetX; let top = clientY + offsetY;
+        if (left + rect.width > window.innerWidth - 10) left = clientX - rect.width - offsetX;
+        if (top + rect.height > window.innerHeight - 10) top = clientY - rect.height - offsetY;
+        const scrollX = window.scrollX || window.pageXOffset; const scrollY = window.scrollY || window.pageYOffset;
+        tooltip.style.left = (left + scrollX) + 'px'; tooltip.style.top = (top + scrollY) + 'px';
+      }
+
+      skills.forEach(el => {
+        const text = el.getAttribute('data-tooltip') || '';
+        el.addEventListener('mousemove', (e) => showTooltip(text, e.clientX, e.clientY));
+        el.addEventListener('mouseenter', (e) => showTooltip(text, e.clientX, e.clientY));
+        el.addEventListener('mouseleave', hideTooltip);
+        el.addEventListener('touchstart', (e) => { const touch = e.touches[0]; showTooltip(text, touch.clientX, touch.clientY); e.preventDefault(); }, {passive:false});
+      });
+
+      document.addEventListener('click', (e) => { if (!e.target.closest('#skills')) hideTooltip(); });
+      window.addEventListener('scroll', () => { if (tooltip.style.display === 'block') hideTooltip(); }, {passive:true});
+      window.addEventListener('resize', () => { if (tooltip.style.display === 'block') hideTooltip(); });
+    })();
+
+    // Avatar modal
+    const avatar = document.getElementById('avatar');
+    const modal = document.getElementById('avatar-modal');
+    avatar.addEventListener('click', () => modal.classList.toggle('hidden'));
+    modal.addEventListener('click', () => modal.classList.add('hidden'));
+  </script>
+
+
+  <script>
+  const primaryColorInput = document.getElementById('particula');
+  const resetBtn = document.getElementById('particula');
+  const applyBtn = document.getElementById('particula');
+
+  const THEME_KEY = 'ggm_theme_v1';
+  let themeState = JSON.parse(localStorage.getItem(THEME_KEY)) || { ...defaultState };
+
+  function applyTheme(state) {
+    if(typeof initParticles === 'function') initParticles(state.primary);
+  }
+
+  // Aplicar imediatamente
+  applyTheme(themeState);
+</script>
+
+</body>
+</html>

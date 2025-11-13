@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meu Portfólio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
+  <link rel="stylesheet" href="style.css" >
+  <script defer src="script.js"></script>
+</head>
+<body class="font-inter transition-colors duration-300" id="body" onload="initTheme()">
+  <!-- Navbar -->
+  <nav class="fixed top-0 w-full bg-white dark:bg-gray-800 shadow-md z-50">
+    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-gray-800 dark:text-white">Meu Portfólio</h1>
+      <div class="flex space-x-4">
+        <button id="theme-toggle" class="text-gray-800 dark:text-white">🌙</button>
+        <button id="dev-mode-toggle" class="text-gray-800 dark:text-white">🛠️ Modo Dev</button>
+        <button id="recruiter-mode-toggle" class="text-gray-800 dark:text-white">👔 Modo Recrutador</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section with Interactive Avatar -->
+  <section class="min-h-screen flex items-center justify-center bg-gray-100 dark:bg-gray-900">
+    <div class="container mx-auto px-4 text-center">
+      <div id="avatar" class="w-32 h-32 mx-auto mb-4 rounded-full bg-blue-500 animate-bounce"></div>
+      <h2 class="text-4xl font-bold text-gray-800 dark:text-white">Bem-vindo ao meu portfólio!</h2>
+      <p class="text-lg text-gray-600 dark:text-gray-300 mt-2">Desenvolvedor Front-End apaixonado por criar experiências únicas.</p>
+    </div>
+  </section>
+
+  <!-- Animated Career Timeline -->
+  <section id="timeline" class="py-16 bg-white dark:bg-gray-800">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center text-gray-800 dark:text-white mb-8">Minha Jornada</h2>
+      <div id="timeline-content" class="space-y-8"></div>
+    </div>
+  </section>
+
+  <!-- Real Skills with Thermometer -->
+  <section id="skills" class="py-16 bg-gray-100 dark:bg-gray-900">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center text-gray-800 dark:text-white mb-8">Minhas Habilidades</h2>
+      <div id="skills-list" class="grid grid-cols-1 md:grid-cols-3 gap-4"></div>
+    </div>
+  </section>
+
+  <!-- Salary Simulator -->
+  <section id="salary-simulator" class="py-16 bg-white dark:bg-gray-800">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center text-gray-800 dark:text-white mb-8">Simulador de Salário</h2>
+      <div class="max-w-md mx-auto">
+        <input id="location-input" type="text" placeholder="Digite sua cidade" class="w-full p-2 border rounded dark:bg-gray-700 dark:text-white">
+        <button id="calculate-salary" class="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Calcular</button>
+        <p id="salary-result" class="mt-4 text-gray-800 dark:text-gray-300"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mini Dashboard with Projects -->
+  <section id="projects" class="py-16 bg-gray-100 dark:bg-gray-900">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center text-gray-800 dark:text-white mb-8">Meus Projetos</h2>
+      <div id="projects-list" class="grid grid-cols-1 md:grid-cols-3 gap-4"></div>
+    </div>
+  </section>
+
+  <!-- AI Chatbot -->
+  <section id="chatbot" class="py-16 bg-white dark:bg-gray-800">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center text-gray-800 dark:text-white mb-8">Converse Comigo</h2>
+      <div class="max-w-md mx-auto">
+        <div id="chat-output" class="h-64 overflow-y-auto border p-4 rounded dark:bg-gray-700 dark:text-white"></div>
+        <input id="chat-input" type="text" placeholder="Digite sua mensagem..." class="w-full p-2 mt-4 border rounded dark:bg-gray-700 dark:text-white">
+        <button id="chat-send" class="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Enviar</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CV Parser -->
+  <section id="cv-parser" class="py-16 bg-gray-100 dark:bg-gray-900">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center text-gray-800 dark:text-white mb-8">Analisador de CV</h2>
+      <div class="max-w-md mx-auto">
+        <input id="cv-upload" type="file" accept=".pdf" class="w-full p-2 border rounded dark:bg-gray-700 dark:text-white">
+        <p id="cv-result" class="mt-4 text-gray-800 dark:text-gray-300"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-8 bg-gray-800 text-white text-center">
+    <p>&copy; 2025 Meu Portfólio. Todos os direitos reservados.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
