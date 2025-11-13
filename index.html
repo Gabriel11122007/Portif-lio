@@ -368,166 +368,168 @@
     <div id="skills" class="grid grid-cols-4 md:grid-cols-4 sm:grid-cols-2 gap-20 max-w-5xl mx-auto relative z-10">
 
 
-     <style>
-  /* 🔧 Animação e tooltip só aparecem ao passar o mouse */
-  .skill {
-    position: relative;
-  }
+      <style>
+        /* 🔧 Animação e tooltip só aparecem ao passar o mouse */
+        .skill {
+          position: relative;
+        }
 
-  .skill span {
-    opacity: 0;
-    transform: translateY(10px);
-    pointer-events: none;
-    transition: opacity 0.3s ease, transform 0.3s ease;
+        .skill span {
+          opacity: 0;
+          transform: translateY(10px);
+          pointer-events: none;
+          transition: opacity 0.3s ease, transform 0.3s ease;
 
-    /* Limite de tamanho e quebra de linha */
-    max-width: 200px; /* você pode ajustar conforme precisar */
-    white-space: normal; /* permite quebrar linha */
-    text-align: center; /* centraliza o texto */
-  }
+          /* Limite de tamanho e quebra de linha */
+          max-width: 200px;
+          /* você pode ajustar conforme precisar */
+          white-space: normal;
+          /* permite quebrar linha */
+          text-align: center;
+          /* centraliza o texto */
+        }
 
-  .skill:hover span {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  @media (max-width: 768px) {
-  .skill span {
-    max-width: 150px; /* menor em telas pequenas */
-    font-size: 0.75rem;
-  }
-}
+        .skill:hover span {
+          opacity: 1;
+          transform: translateY(0);
+        }
 
-</style>
-<!-- HTML -->
-<div class="skill group flex flex-col items-center cursor-pointer relative z-20">
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-plain.svg"
-       class="w-16 transition-transform group-hover:scale-110 relative z-30" alt="HTML5" />
-  <span class="absolute bottom-[-3rem] opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0
+        @media (max-width: 768px) {
+          .skill span {
+            max-width: 150px;
+            /* menor em telas pequenas */
+            font-size: 0.75rem;
+          }
+        }
+      </style>
+      <!-- HTML -->
+      <div class="skill group flex flex-col items-center cursor-pointer relative z-20">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-plain.svg"
+          class="w-16 transition-transform group-hover:scale-110 relative z-30" alt="HTML5" />
+        <span class="absolute bottom-[-3rem] opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0
                transition-all duration-300 ease-in-out
                text-sm bg-black/80 text-white px-3 py-1 rounded-lg shadow-lg z-40 whitespace-nowrap">
-    HTML5
-  </span>
-</div>
+          HTML5
+        </span>
+      </div>
 
-<!-- CSS -->
-<div class="skill group flex flex-col items-center cursor-pointer relative z-20">
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-plain.svg"
-       class="w-16 transition-transform group-hover:scale-110 relative z-30" alt="CSS3" />
-  <span class="absolute bottom-[-3rem] opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0
+      <!-- CSS -->
+      <div class="skill group flex flex-col items-center cursor-pointer relative z-20">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-plain.svg"
+          class="w-16 transition-transform group-hover:scale-110 relative z-30" alt="CSS3" />
+        <span class="absolute bottom-[-3rem] opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0
                transition-all duration-300 ease-in-out
                text-sm bg-black/80 text-white px-3 py-1 rounded-lg shadow-lg z-40 whitespace-nowrap">
-    CSS3
-  </span>
-</div>
+          CSS3
+        </span>
+      </div>
 
-<!-- JavaScript -->
-<div class="skill group flex flex-col items-center cursor-pointer relative z-20">
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
-       class="w-16 transition-transform group-hover:scale-110 relative z-30" alt="JavaScript" />
-  <span class="absolute bottom-[-3rem] opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0
+      <!-- JavaScript -->
+      <div class="skill group flex flex-col items-center cursor-pointer relative z-20">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+          class="w-16 transition-transform group-hover:scale-110 relative z-30" alt="JavaScript" />
+        <span class="absolute bottom-[-3rem] opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0
                transition-all duration-300 ease-in-out
                text-sm bg-black/80 text-white px-3 py-1 rounded-lg shadow-lg z-40 whitespace-nowrap">
-    JavaScript
-  </span>
-</div>
+          JavaScript
+        </span>
+      </div>
 
-<!-- React -->
-<div class="skill group flex flex-col items-center cursor-pointer relative z-20">
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
-       class="w-16 transition-transform group-hover:scale-110 relative z-30" alt="React" />
-  <span class="absolute bottom-[-3rem] opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0
+      <!-- React -->
+      <div class="skill group flex flex-col items-center cursor-pointer relative z-20">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
+          class="w-16 transition-transform group-hover:scale-110 relative z-30" alt="React" />
+        <span class="absolute bottom-[-3rem] opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0
                transition-all duration-300 ease-in-out
                text-sm bg-black/80 text-white px-3 py-1 rounded-lg shadow-lg z-40 whitespace-nowrap">
-    React
-  </span>
-</div>
+          React
+        </span>
+      </div>
 
-<!-- PHP -->
-<div class="skill group flex flex-col items-center cursor-pointer relative z-20">
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg"
-       class="w-16 transition-transform group-hover:scale-110 relative z-30" alt="PHP" />
-  <span class="absolute bottom-[-3rem] opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0
+      <!-- PHP -->
+      <div class="skill group flex flex-col items-center cursor-pointer relative z-20">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg"
+          class="w-16 transition-transform group-hover:scale-110 relative z-30" alt="PHP" />
+        <span class="absolute bottom-[-3rem] opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0
                transition-all duration-300 ease-in-out
                text-sm bg-black/80 text-white px-3 py-1 rounded-lg shadow-lg z-40 whitespace-nowrap">
-    PHP
-  </span>
-</div>
+          PHP
+        </span>
+      </div>
 
-<!-- MySQL -->
-<div class="skill group flex flex-col items-center cursor-pointer relative z-20">
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"
-       class="w-16 transition-transform group-hover:scale-110 relative z-30" alt="MySQL" />
-  <span class="absolute bottom-[-3rem] opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0
+      <!-- MySQL -->
+      <div class="skill group flex flex-col items-center cursor-pointer relative z-20">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"
+          class="w-16 transition-transform group-hover:scale-110 relative z-30" alt="MySQL" />
+        <span class="absolute bottom-[-3rem] opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0
                transition-all duration-300 ease-in-out
                text-sm bg-black/80 text-white px-3 py-1 rounded-lg shadow-lg z-40 whitespace-nowrap">
-    MySQL
-  </span>
-</div>
+          MySQL
+        </span>
+      </div>
 
-<!-- Git -->
-<div class="skill group flex flex-col items-center cursor-pointer relative z-20">
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
-       class="w-16 transition-transform group-hover:scale-110 relative z-30" alt="Git" />
-  <span class="absolute bottom-[-3rem] opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0
+      <!-- Git -->
+      <div class="skill group flex flex-col items-center cursor-pointer relative z-20">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
+          class="w-16 transition-transform group-hover:scale-110 relative z-30" alt="Git" />
+        <span class="absolute bottom-[-3rem] opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0
                transition-all duration-300 ease-in-out
                text-sm bg-black/80 text-white px-3 py-1 rounded-lg shadow-lg z-40 whitespace-nowrap">
-    Git
-  </span>
-</div>
+          Git
+        </span>
+      </div>
 
-<!-- Python -->
-<div class="skill group flex flex-col items-center cursor-pointer relative z-20">
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
-       class="w-16 transition-transform group-hover:scale-110 relative z-30" alt="Python" />
-  <span class="absolute bottom-[-3rem] opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0
+      <!-- Python -->
+      <div class="skill group flex flex-col items-center cursor-pointer relative z-20">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
+          class="w-16 transition-transform group-hover:scale-110 relative z-30" alt="Python" />
+        <span class="absolute bottom-[-3rem] opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0
                transition-all duration-300 ease-in-out
                text-sm bg-black/80 text-white px-3 py-1 rounded-lg shadow-lg z-40 whitespace-nowrap">
-    Python
-  </span>
-</div>
+          Python
+        </span>
+      </div>
 
-<!-- Tailwind -->
-<div class="skill group flex flex-col items-center cursor-pointer relative z-20">
-  <img src="tailwind.png" class="w-16 transition-transform group-hover:scale-110 relative z-30"
-       alt="Tailwind CSS" />
-  <span class="absolute bottom-[-3rem] opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0
+      <!-- Tailwind -->
+      <div class="skill group flex flex-col items-center cursor-pointer relative z-20">
+        <img src="tailwind.png" class="w-16 transition-transform group-hover:scale-110 relative z-30"
+          alt="Tailwind CSS" />
+        <span class="absolute bottom-[-3rem] opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0
                transition-all duration-300 ease-in-out
                text-sm bg-black/80 text-white px-3 py-1 rounded-lg shadow-lg z-40 whitespace-nowrap">
-    Tailwind
-  </span>
-</div>
+          Tailwind
+        </span>
+      </div>
 
-<!-- Bootstrap -->
-<div class="skill group flex flex-col items-center cursor-pointer relative z-20">
-  <img src="bootstrap.png" class="w-16 transition-transform group-hover:scale-110 relative z-30"
-       alt="Bootstrap" />
-  <span class="absolute bottom-[-3rem] opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0
+      <!-- Bootstrap -->
+      <div class="skill group flex flex-col items-center cursor-pointer relative z-20">
+        <img src="bootstrap.png" class="w-16 transition-transform group-hover:scale-110 relative z-30"
+          alt="Bootstrap" />
+        <span class="absolute bottom-[-3rem] opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0
                transition-all duration-300 ease-in-out
                text-sm bg-black/80 text-white px-3 py-1 rounded-lg shadow-lg z-40 whitespace-nowrap">
-    Bootstrap
-  </span>
-</div>
+          Bootstrap
+        </span>
+      </div>
 
-<!-- Power BI -->
-<div class="skill group flex flex-col items-center cursor-pointer relative z-20">
-  <img src="powerBI.png" class="w-16 transition-transform group-hover:scale-110 relative z-30"
-       alt="Power BI" />
-  <span class="absolute bottom-[-3rem] opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0
+      <!-- Power BI -->
+      <div class="skill group flex flex-col items-center cursor-pointer relative z-20">
+        <img src="powerBI.png" class="w-16 transition-transform group-hover:scale-110 relative z-30" alt="Power BI" />
+        <span class="absolute bottom-[-3rem] opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0
                transition-all duration-300 ease-in-out
                text-sm bg-black/80 text-white px-3 py-1 rounded-lg shadow-lg z-40 whitespace-nowrap">
-    Power BI
-  </span>
-</div>
-<!-- Supabase -->
-<div class="skill group flex flex-col items-center cursor-pointer relative z-20">
-  <img src="supabase.png" class="w-16 transition-transform group-hover:scale-110 relative z-30"
-       alt="Supabase" />
-  <span class="absolute bottom-[-3rem] opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0
+          Power BI
+        </span>
+      </div>
+      <!-- Supabase -->
+      <div class="skill group flex flex-col items-center cursor-pointer relative z-20">
+        <img src="supabase.png" class="w-16 transition-transform group-hover:scale-110 relative z-30" alt="Supabase" />
+        <span class="absolute bottom-[-3rem] opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0
                transition-all duration-300 ease-in-out
                text-sm bg-black/80 text-white px-3 py-1 rounded-lg shadow-lg z-40 whitespace-nowrap">
-    Supabase
-  </span>
-</div>
+          Supabase
+        </span>
+      </div>
 
 
     </div>
