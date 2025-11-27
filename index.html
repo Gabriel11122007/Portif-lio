@@ -171,6 +171,142 @@
       opacity: 1;
       transform: translateY(-2px);
     }
+
+    /* ================================
+        TEMA GLOBAL (CLARO/ESCURO)
+  =================================== */
+
+    /* Tema escuro */
+    :root[data-theme="dark"] {
+      --bg: #0d1117;
+      --text: #ffffff;
+      --card: #161b22;
+      --accent: #00aaff;
+    }
+
+    /* Tema claro */
+    :root[data-theme="light"] {
+      --bg: #ffffff;
+      --text: #111111;
+      --card: #f2f2f2;
+    }
+
+    /* Aplicação global */
+    body {
+      background: var(--bg);
+      color: var(--text);
+      transition: background 0.4s ease, color 0.4s ease;
+    }
+
+
+
+    /* Botão de tema */
+    .theme-btn {
+      font-size: 1.6rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--text);
+      transition: transform 0.2s ease;
+    }
+
+    .theme-btn:hover {
+      transform: scale(1.15);
+    }
+
+    /* Tema escuro */
+    [data-theme="dark"] {
+      --bg-primary: #111;
+      --bg-secondary: #1a1a1a;
+      --text-primary: #fff;
+      --text-secondary: #ddd;
+      --border-color: #444;
+    }
+
+    /* Tema claro */
+    [data-theme="light"] {
+      --bg-primary: #ffffff;
+      --bg-secondary: #f2f2f2;
+      --text-primary: #111;
+      --text-secondary: #333;
+      --border-color: #ccc;
+    }
+
+
+
+
+    .lang-select {
+      padding: 10px 14px;
+      padding-left: 48px;
+
+      font-size: 16px;
+      font-weight: 500;
+
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+
+      background-color: var(--bg-secondary);
+      color: var(--text-primary);
+
+      background-repeat: no-repeat;
+      background-position: 10px center;
+      background-size: 30px 22px;
+
+      cursor: pointer;
+      transition: 0.25s ease;
+      outline: none;
+
+      backdrop-filter: blur(6px);
+    }
+
+    /* Hover */
+    .lang-select:hover {
+      border-color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    /* Foco (quando clica) */
+    .lang-select:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 8px var(--accent);
+    }
+
+    /* Itens internos sempre claros/escuros automáticos */
+    .lang-select option {
+      background: var(--bg-secondary);
+      color: var(--text-primary);
+    }
+
+    /* ===============================
+   AVATAR 3D — VERSÃO OTIMIZADA
+================================*/
+
+    .ggm-avatar-wrapper {
+      position: relative;
+      width: 180px;
+      height: 180px;
+      perspective: 1000px;
+      cursor: pointer;
+      z-index: 9999999;
+      /* seguro */
+    }
+
+    .ggm-avatar-img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      border: 4px solid var(--primary);
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.35);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-radius 0.3s ease;
+      transform-style: preserve-3d;
+      display: block;
+    }
+
+    /* Efeito 3D só quando NÃO estiver em zoom */
+    .ggm-avatar-wrapper:hover .ggm-avatar-img:not(.ggm-zoom) {
+      transform: rotateY(15deg) rotateX(8deg) scale(1.06);
+      box-shadow: 0 22px 50px rgba(0, 0, 0, 0.48);
+    }
   </style>
 </head>
 
@@ -199,11 +335,21 @@
         <li><a href="#contato" class="hover:text-indigo-400 transition" data-lang="navContato"
             style="color:var(--text)">Contato</a></li>
       </ul>
-      <!-- BOTÃO LÍNGUA -->
-      <button id="langSwitcher" class="px-3 py-1 rounded-lg text-sm border hover:bg-[color:var(--glass)] transition"
-        style="border-color:var(--border); color:var(--text)">
-        PT-BR
-      </button>
+      <button id="themeSwitcher" class="theme-btn" aria-label="Trocar tema"></button>
+
+
+
+
+      <select id="langSelector" class="lang-select">
+        <option value="pt">Português</option>
+        <option value="en">English</option>
+        <option value="es">Español</option>
+      </select>
+
+
+
+
+
 
     </nav>
   </header>
@@ -213,29 +359,32 @@
     class="relative flex flex-col justify-center items-center text-center min-h-screen pt-32 overflow-hidden">
 
 
-    <div class="relative z-10 flex flex-col items-center max-w-3xl px-6">
-      <!-- FOTO / AVATAR -->
-      <div class="relative mb-8" data-aos="zoom-in">
-        <img id="avatar" src="avatar.jpg" alt="Gabriel Marcelino"
-          class="w-40 h-40 sm:w-48 sm:h-48 rounded-full border-4 border-[color:var(--primary)] shadow-lg hover:scale-105 transition-transform duration-500 cursor-pointer" />
-        <div class="absolute inset-0 rounded-full" style="box-shadow:0 8px 30px rgba(0,0,0,0.25)"></div>
+    <div class="relative z-99999 flex flex-col items-center max-w-3xl px-6">
+      <!-- avatar (onde já estava no seu hero) -->
+      <div class="ggm-avatar-wrapper" data-aos="zoom-in">
+        <img src="avatar.jpg" alt="Gabriel Marcelino" class="ggm-avatar-img" />
       </div>
 
-      <h2 class="text-5xl sm:text-6xl font-extrabold mb-6 gradient-text" data-aos="zoom-in" data-lang="heroTitulo">
-        Futuro Engenheiro de Software<br> & Desenvolvedor Full Stack
-      </h2>
 
-      <p class="text-[color:var(--muted)] text-lg mb-8" data-aos="fade-up" data-lang="heroTexto">
-        Criando soluções digitais modernas, eficientes e inteligentes.<br>
-        Transformando ideias em experiências tecnológicas reais.
-      </p>
 
-      <div class="flex flex-wrap justify-center gap-4" data-aos="zoom-in-up">
-        <a href="#contato" class="px-6 py-3 rounded-lg font-semibold hover:opacity-95 transition" data-lang="btnContato"
-          style="background:var(--primary); color:white">Entrar em Contato</a>
-        <a href="#trajeto" class="px-6 py-3 border rounded-lg font-semibold hover:bg-[color:var(--glass)] transition"
-          data-lang="btnTrajeto" style="border-color:var(--border); color:var(--text)">Conhecer Trajetória</a>
-      </div>
+    </div>
+
+    <h2 class="text-5xl sm:text-6xl font-extrabold mb-6 gradient-text" data-aos="zoom-in" data-lang="heroTitulo">
+      Futuro Engenheiro de Software<br> & Desenvolvedor Full Stack
+    </h2>
+
+    <p id="typingText"></p>
+
+    <br><br>
+
+
+
+    <div class="flex flex-wrap justify-center gap-4" data-aos="zoom-in-up">
+      <a href="#contato" class="px-6 py-3 rounded-lg font-semibold hover:opacity-95 transition" data-lang="btnContato"
+        style="background:var(--primary); color:white">Entrar em Contato</a>
+      <a href="#trajeto" class="px-6 py-3 border rounded-lg font-semibold hover:bg-[color:var(--glass)] transition"
+        data-lang="btnTrajeto" style="border-color:var(--border); color:var(--text)">Conhecer Trajetória</a>
+    </div>
     </div>
     <br><br><br>
 
@@ -645,7 +794,8 @@
 
       <!-- CONTATO -->
       <div>
-        <h4 class="text-lg font-semibold mb-3 text-[color:var(--primary)]" data-lang="footerContatoTitulo" id="contato">Contato</h4>
+        <h4 class="text-lg font-semibold mb-3 text-[color:var(--primary)]" data-lang="footerContatoTitulo" id="contato">
+          Contato</h4>
 
         <div class="flex flex-col gap-3 text-sm">
           <a href="mailto:ggabrielmarcelino@gmail.com"
@@ -906,7 +1056,7 @@
       }
       paused = !paused;
     });
-    
+
     // opcional: suporte para mudar tipo de interação via teclas (U para grab, I para repulse, O para bubble)
     window.addEventListener('keydown', (ev) => {
       const key = ev.key.toLowerCase();
@@ -994,7 +1144,6 @@
         "navProjetos": "Projetos",
         "navContato": "Contato",
         "heroTitulo": "Futuro Engenheiro de Software<br> & Desenvolvedor Full Stack",
-        "heroTexto": "Criando soluções digitais modernas, eficientes e inteligentes.<br> Transformando ideias em experiências tecnológicas reais.",
         "btnContato": "Entrar em Contato",
         "btnTrajeto": "Conhecer Trajetória",
         "scrollDown": "↓ Role para explorar",
@@ -1062,7 +1211,6 @@
         "navProjetos": "Projects",
         "navContato": "Contact",
         "heroTitulo": "Future Software Engineer<br> & Full Stack Developer",
-        "heroTexto": "Creating modern, efficient, and intelligent digital solutions.<br> Turning ideas into real technological experiences.",
         "btnContato": "Contact Me",
         "btnTrajeto": "View Journey",
         "scrollDown": "↓ Scroll to explore",
@@ -1130,7 +1278,6 @@
         "navProjetos": "Proyectos",
         "navContato": "Contacto",
         "heroTitulo": "Futuro Ingeniero de Software<br> & Desarrollador Full Stack",
-        "heroTexto": "Creando soluciones digitales modernas, eficientes e inteligentes.<br> Transformando ideas en experiencias tecnológicas reales.",
         "btnContato": "Contáctame",
         "btnTrajeto": "Ver Trayectoria",
         "scrollDown": "↓ Desplázate para explorar",
@@ -1192,33 +1339,128 @@
       }
     };
 
-    // Switcher atualizado para suportar PT ↔ EN ↔ ES
-    const switcher = document.getElementById("langSwitcher");
+    const flagUrls = {
+      pt: "https://flagcdn.com/w40/br.png",
+      en: "https://flagcdn.com/w40/us.png",
+      es: "https://flagcdn.com/w40/es.png"
+    };
+
+    const selector = document.getElementById("langSelector");
     let lang = localStorage.getItem("lang") || "pt";
 
+    // Atualiza bandeira e textos
     function updateLang(l) {
+      selector.style.backgroundImage = `url('${flagUrls[l]}')`;
+      selector.value = l;
+
       document.querySelectorAll("[data-lang]").forEach(el => {
         el.innerHTML = translations[l][el.dataset.lang];
       });
 
-      // Alterna a língua de acordo com a atual
-      if (l === "pt") switcher.textContent = "EN";
-      else if (l === "en") switcher.textContent = "ES";
-      else switcher.textContent = "PT";
-
       localStorage.setItem("lang", l);
     }
 
-    switcher.onclick = () => {
-      if (lang === "pt") lang = "en";
-      else if (lang === "en") lang = "es";
-      else lang = "pt";
+    selector.addEventListener("change", () => {
+      updateLang(selector.value);
+    });
 
-      updateLang(lang);
+    // Inicializa
+    updateLang(lang);
+
+
+  </script>
+  <script>
+    // ===================================
+    //     SISTEMA DE TEMA GLOBAL INTELIGENTE
+    // ===================================
+
+    const THEME_KEY = "site_theme_v2";
+    const themeButton = document.getElementById("themeSwitcher");
+
+    // Verifica se o usuário já escolheu um tema
+    let savedTheme = localStorage.getItem(THEME_KEY);
+
+    // Detecta horário do dia (se o usuário nunca escolheu)
+    if (!savedTheme) {
+      const hour = new Date().getHours();
+      savedTheme = (hour >= 19 || hour < 6) ? "dark" : "light";
+    }
+
+    // Aplica o tema
+    document.documentElement.setAttribute("data-theme", savedTheme);
+    updateThemeIcon(savedTheme);
+
+    // Troca tema quando clicar
+    themeButton.addEventListener("click", () => {
+      savedTheme = savedTheme === "dark" ? "light" : "dark";
+      document.documentElement.setAttribute("data-theme", savedTheme);
+      localStorage.setItem(THEME_KEY, savedTheme);
+      updateThemeIcon(savedTheme);
+    });
+
+    // Atualiza o ícone do botão
+    function updateThemeIcon(theme) {
+      themeButton.textContent = theme === "dark" ? "🌙" : "☀️";
+    }
+
+  </script>
+
+
+  <script>
+    // PEGA O IDIOMA SALVO OU PT COMO PADRÃO
+    let langg = localStorage.getItem("lang") || "pt";
+
+    // EXISTE AQUI A TRADUÇÃO DO SEU TEXTO
+    const typingTexts = {
+      pt: `Criando soluções digitais modernas, eficientes e inteligentes. Transformando ideias em experiências tecnológicas reais.`,
+      en: `Creating modern, efficient and intelligent digital solutions. Turning ideas into real technological experiences.`,
+      es: `Creando soluciones digitales modernas, eficientes e inteligentes. Transformando ideas en experiencias tecnológicas reales.`
     };
 
-    updateLang(lang);
+    // VARIÁVEIS DO EFEITO
+    let text = typingTexts[lang];
+    let i = 0;
+    let typingTimeout;
+
+    // FUNÇÃO DE DIGITAÇÃO (IGUAL SUA)
+    function typeEffect() {
+      if (i < text.length) {
+        document.getElementById("typingText").innerHTML += text.charAt(i);
+        i++;
+        typingTimeout = setTimeout(typeEffect, 40);
+      }
+    }
+
+    // FUNÇÃO QUE REINICIA O TEXTO QUANDO TROCA DE IDIOMA
+    function restartTyping(newLangg) {
+      lang = newLangg;
+      text = typingTexts[newLangg];
+      i = 0;
+
+      // limpa text
+      document.getElementById("typingText").innerHTML = "";
+
+      // limpa timeouts anteriores
+      clearTimeout(typingTimeout);
+
+      // recomeça digitando
+      typeEffect();
+    }
+
+    // INICIA AO CARREGAR
+    window.onload = typeEffect;
+
+    // CONECTA COM O SELETOR DE IDIOMA QUE VOCÊ JÁ TEM
+    document.getElementById("langSelector").addEventListener("change", (e) => {
+      const newLang = e.target.value;
+      restartTyping(newLang);
+    });
+
   </script>
+
+
+
+
 </body>
 
 </html>
