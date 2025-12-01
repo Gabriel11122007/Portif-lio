@@ -207,6 +207,7 @@
       border: none;
       cursor: pointer;
       color: var(--text);
+      gap: 0;
       transition: transform 0.2s ease;
     }
 
@@ -307,52 +308,67 @@
       transform: rotateY(15deg) rotateX(8deg) scale(1.06);
       box-shadow: 0 22px 50px rgba(0, 0, 0, 0.48);
     }
+
+
+
+
   </style>
 </head>
 
 <body class="font-sans antialiased relative" data-theme>
+<div id="home"></div>
+<!-- HEADER -->
+<header class="fixed top-0 left-0 w-full bg-[color:var(--glass)]/80 backdrop-blur-md 
+               z-50 border-b w-full" style="border-color:var(--border);">
 
-  <!-- HEADER -->
-  <header class="fixed top-0 left-0 w-full bg-[color:var(--glass)]/80 backdrop-blur-md z-50 border-b" id="home"
-    style="border-color:var(--border);">
-    <nav class="max-w-6xl mx-auto px-4 sm:px-6 flex justify-between items-center h-20 relative">
-      <div class="flex items-center gap-4">
-        <a href="#hero">
-          <h1 class="text-2xl font-extrabold gradient-text tracking-wide">Gabriel Marcelino</h1>
-        </a>
-      </div>
+  <nav class=" px-4 sm:px-6 flex justify-between items-center h-20">
 
-      <ul class="hidden md:flex gap-6 text-sm font-medium">
-        <li><a href="#sobre" class="hover:text-indigo-400 transition" data-lang="navSobre"
-            style="color:var(--text)">Sobre</a></li>
-        <li><a href="#trajeto" class="hover:text-indigo-400 transition" data-lang="navTrajeto"
-            style="color:var(--text)">Trajetória</a></li>
-        <li><a href="#habilidades" class="hover:text-indigo-400 transition" data-lang="navHabilidades"
-            style="color:var(--text)">Habilidades</a>
-        </li>
-        <li><a href="#projetos" class="hover:text-indigo-400 transition" data-lang="navProjetos"
-            style="color:var(--text)">Projetos</a></li>
-        <li><a href="#contato" class="hover:text-indigo-400 transition" data-lang="navContato"
-            style="color:var(--text)">Contato</a></li>
-      </ul>
-      <button id="themeSwitcher" class="theme-btn" aria-label="Trocar tema"></button>
+    <!-- LOGO -->
+    <div class="flex items-center">
+      <a href="#hero">
+        <h1 class="font-extrabold gradient-text tracking-wide 
+                   text-lg sm:text-base xs:text-sm 
+                   leading-tight">
+          Gabriel 
+          <br class="sm:block md:hidden">
+          Marcelino
+        </h1>
+      </a>
+          <!-- BOTÃO TEMA -->
+    <button id="themeSwitcher" class="theme-btn ml-10 mr-10" aria-label="Trocar tema"></button>
+
+    <!-- SELECT IDIOMA -->
+    <select id="langSelector"
+            class="lang-select text-sm sm:text-xs md:text-sm lg:text-base">
+      <option value="pt">PT-BR</option>
+      <option value="en">EN</option>
+      <option value="es">ES</option>
+    </select>
+    </div>
+
+    <!-- MENU DESKTOP -->
+    <ul class="hidden md:flex gap-6 text-sm font-medium">
+      <li><a href="#sobre" class="hover:text-indigo-400 transition"
+             data-lang="navSobre" style="color:var(--text)">Sobre</a></li>
+
+      <li><a href="#trajeto" class="hover:text-indigo-400 transition"
+             data-lang="navTrajeto" style="color:var(--text)">Trajetória</a></li>
+
+      <li><a href="#habilidades" class="hover:text-indigo-400 transition"
+             data-lang="navHabilidades" style="color:var(--text)">Habilidades</a></li>
+
+      <li><a href="#projetos" class="hover:text-indigo-400 transition"
+             data-lang="navProjetos" style="color:var(--text)">Projetos</a></li>
+
+      <li><a href="#contato" class="hover:text-indigo-400 transition"
+             data-lang="navContato" style="color:var(--text)">Contato</a></li>
+    </ul>
 
 
+  </nav>
 
+</header>
 
-      <select id="langSelector" class="lang-select">
-        <option value="pt">Português</option>
-        <option value="en">English</option>
-        <option value="es">Español</option>
-      </select>
-
-
-
-
-
-
-    </nav>
-  </header>
 
   <!-- HERO -->
   <section id="hero"
@@ -379,7 +395,7 @@
 
 
 
-    <div class="flex flex-wrap justify-center gap-4" data-aos="zoom-in-up">
+    <div class="flex flex-wrap justify-center gap-4 relative z-20" data-aos="zoom-in-up">
       <a href="#contato" class="px-6 py-3 rounded-lg font-semibold hover:opacity-95 transition" data-lang="btnContato"
         style="background:var(--primary); color:white">Entrar em Contato</a>
       <a href="#trajeto" class="px-6 py-3 border rounded-lg font-semibold hover:bg-[color:var(--glass)] transition"
@@ -840,7 +856,7 @@
             <span data-lang="footerGithub">GitHub</span>
           </a>
 
-          <a href="https://www.linkedin.com/in/seu-linkedin-aqui" target="_blank"
+          <a href="https://www.linkedin.com/in/gabriel-gazeta-marcelino-ab3a26379/" target="_blank"
             class="flex items-center gap-2 text-[color:var(--primary)] hover:opacity-80 transition cursor-pointer">
             <i data-lucide="linkedin" class="w-4 h-4"></i>
             <span data-lang="footerLinkedin">LinkedIn</span>
